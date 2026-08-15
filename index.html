@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTT Enterprises, LLC | IT Support & Remote Assistance</title>
+  <style>
+    :root {
+      --primary: #0052cc;
+      --primary-dark: #003a99;
+      --accent-green: #10b981;
+      --bg-dark: #0f172a;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--bg-dark);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+    }
+
+    .btn-remote {
+      background-color: #2563eb;
+      color: var(--white);
+      font-size: 1.1rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-remote:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--white);
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Edge Helper Notice Box */
+    .edge-help-box {
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .edge-help-box strong {
+      color: #f1f5f9;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      background: var(--white);
+      max-width: 1200px;
+      margin: -2rem auto 3rem;
+      padding: 1.25rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 5px solid var(--accent-green);
+    }
+
+    .status-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    }
+
+    /* Service Cards */
+    .services {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--bg-dark);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid #f1f5f9;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: #e0e7ff;
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--bg-dark);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      color: #94a3b8;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid #334155;
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .footer-links {
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="https://support.ttthelpdesk.com" class="brand">
+        <div class="brand-logo">TTT</div>
+        <span>TTT Enterprises Portal</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="https://support.ttthelpdesk.com">Home</a></li>
+        <li><a href="#remote-support">Remote Assistance</a></li>
+        <li><a href="https://support.ttthelpdesk.com/portal/logon.aspx" class="btn btn-outline">Client Login</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>TTT Enterprises Support Portal</h1>
+      <p>Need immediate technical assistance? Click below to launch a direct remote support session with an engineer.</p>
+
+      <!-- Buttons CTA -->
+      <div class="hero-buttons">
+        <!-- DIRECT DOWNLOAD BUTTON -->
+        <a href="https://download.sherpadesk.com/?ac=gc" 
+           class="btn btn-remote" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           download>
+           🖥️ Start Remote Connection
+        </a>
+
+        <a href="https://support.ttthelpdesk.com/portal/logon.aspx" class="btn btn-outline" style="color: white; border-color: white;">
+           Portal Login
+        </a>
+      </div>
+
+      <!-- Edge SmartScreen Client Notice -->
+      <div class="edge-help-box">
+        <strong>⚠️ Microsoft Edge User?</strong> If Edge blocks the download with a warning:
+        <br>
+        1. Click the <strong>three dots (...)</strong> next to the download in your browser bar.
+        <br>
+        2. Select <strong>Keep</strong> &rarr; Click <strong>Show More</strong> &rarr; Click <strong>Keep Anyway</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- System Status Banner -->
+  <div class="status-bar">
+    <div class="status-info">
+      <span class="status-dot"></span>
+      <span>All TTT Helpdesk Support Systems Operational</span>
+    </div>
+    <a href="https://support.ttthelpdesk.com/portal/logon.aspx" style="color: var(--primary); text-decoration: none; font-weight: 600;">Client Login &rarr;</a>
+  </div>
+
+  <!-- Main Services / Portal Actions -->
+  <section class="services" id="remote-support">
+    <div class="section-title">
+      <h2>How Can We Help Today?</h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Fast, secure IT assistance for all TTT Enterprises clients</p>
+    </div>
+
+    <div class="grid">
+      <!-- Direct Download Card -->
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Remote Support</h3>
+        <p>Download our secure, lightweight remote client tool to allow a technician to remotely resolve your system issue.</p>
+        <a href="https://download.sherpadesk.com/?ac=gc" class="btn btn-primary" target="_blank" rel="noopener noreferrer" download>Download Remote Tool</a>
+      </div>
+
+      <!-- Portal Login Card -->
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h3>Client Portal Logon</h3>
+        <p>Access your organization's support portal to create new tickets, view updates, and track open issues.</p>
+        <a href="https://support.ttthelpdesk.com/portal/logon.aspx" class="btn btn-outline">Go to Portal Logon</a>
+      </div>
+
+      <!-- Ticket Request Card -->
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Support Request</h3>
+        <p>Need non-urgent assistance? Log into the portal to submit a new service desk ticket.</p>
+        <a href="https://support.ttthelpdesk.com/portal/logon.aspx" class="btn btn-outline">Submit Ticket</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>TTT Enterprises, LLC</strong> | IT Support & Service Desk</p>
+    <ul class="footer-links">
+      <li><a href="https://support.ttthelpdesk.com">Home</a></li>
+      <li><a href="https://support.ttthelpdesk.com/portal/logon.aspx">Portal Logon</a></li>
+      <li><a href="https://download.sherpadesk.com/?ac=gc" target="_blank" rel="noopener noreferrer">Remote Support Download</a></li>
+    </ul>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      Support Software by TTT Enterprises LLC &copy; 2026. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
